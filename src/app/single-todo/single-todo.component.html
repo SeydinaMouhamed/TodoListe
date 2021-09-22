@@ -1,0 +1,16 @@
+<div *ngIf="todo">
+    <div class="card w-25 mx-auto">
+        <img [src] = "todo.todoImage" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{todo.todoName}}</h5>
+            <p class="card-text">{{todo.description}}</p>
+        </div>
+    <a class="btn btn-outline-info block w-auto m-4" routerLink = "/todo" >👈🏾 👈🏾 Retour à l'accueille</a>
+    </div><br><br><hr>
+</div>
+
+<div *ngIf=error>
+    <h1>{{error}}</h1>
+</div>
+
+

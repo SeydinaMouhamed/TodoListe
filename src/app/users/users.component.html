@@ -1,0 +1,31 @@
+
+
+<button class="btn btn-outline-info mt-3" [routerLink]="['/add-user']">Ajouter un utilisateur</button>
+
+<div *ngIf="userList.length > 0">
+	<table class="table" >
+		<thead class="thead-light">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Prénom</th>
+			<th scope="col">Nom</th>
+			<th scope="col">Date de Naissannce</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr *ngFor="let user of userList, let i = index">
+			<th scope="row">{{i+1}}</th>
+			<td>{{user.firstName}}</td>
+			<td>{{user.lastName}}</td>
+			<td>{{user.dateBirth}}</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+<div class="mt-5" *ngIf="userList.length === 0">
+	<div class="alert alert-warning" role="alert">
+		Aucun utilisateur à afficher
+	</div>
+</div>
+

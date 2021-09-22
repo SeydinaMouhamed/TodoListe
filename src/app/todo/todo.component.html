@@ -1,0 +1,66 @@
+<div *ngIf = todos>
+    <h1>Liste des Tâches a réaliser</h1>
+
+    <ul class="list-group">
+
+        <p>{{maDate}}</p>
+        <ul>
+            <li>format: dd-MM-yyy 👉🏾  {{maDate | date: 'dd-MM-yyy'}}</li>
+            <li>format: dd/MM/yyy 👉🏾 {{maDate | date: 'dd/MM/yyy'}}</li>
+            <li>format: short 👉🏾 {{maDate | date: 'short'}}</li>
+            <li>format: full 👉🏾 {{maDate | date: 'full'}}</li>
+            <li>format: long 👉🏾 {{maDate | date: 'long'}}</li>
+            <li>format: medium 👉🏾 {{maDate | date: 'medium'}}</li>
+        </ul>
+        <br><hr><br><br>
+
+        <li class="list-group-item" *ngFor="let item of todos, let i = index">
+            <div [ngClass]="{encours: item.todoStatus, terminee: !item.todoStatus}">
+
+                <img [src]="item.todoImage" class="mr-4"> {{item.todoName | uppercase}}
+
+                <button class="btn btn-primary"
+                        [disabled]="item.todoStatus"
+                        (click)="onChangeStatus(i)">En Cours</button>
+
+                <button class="btn btn-success"
+                        [disabled]="!item.todoStatus"
+                        (click)="onChangeStatus(i)">Terminée</button>
+
+                <!--Action de modifier-->
+                <button class="btn btn-danger"
+                        *ngIf="!item.isModif"
+                        (click)="onChangeIsModif(i)">Modifier</button>
+
+                <button class="btn btn-success"
+                        *ngIf="item.isModif"
+                        (click)="onChangeIsModif(i)">modif Terminée</button>
+
+                <button class="btn btn-dark"
+                        (click)="voirSigleTodo(i)">détail</button>
+
+                <input type="text" class="form-control"
+                       [(ngModel)]="item.todoName"
+                       *ngIf="item.isModif">
+            </div>
+        </li><br><hr>
+    </ul>
+</div>
+
+<!--
+<div class="card-container mx-auto" *ngFor="let todo of todos, let i = index">
+    <div class="card card-item" *ngIf=todo >
+        <img [src] = "todo.todoImage" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">{{todo.todoName}}</h5>
+            <p class="card-text">{{todo.description | slice:0:150}} ... </p>
+        </div>
+        <a class="btn btn-outline-info block w-auto m-4" routerLink = "/todo" >Detail </a>
+    </div>
+</div>
+-->
+
+<div *ngIf = !todos >
+    <h1>Aucun todo à afficher !</h1>
+    <a class="btn btn-outline-info block w-100 my-auto" routerLink = "/todo" >👈🏾 👈🏾 Retour à l'accueille</a>
+</div>

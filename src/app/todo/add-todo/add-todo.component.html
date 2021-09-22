@@ -1,0 +1,27 @@
+<div class="card w-50 mx-auto" >
+    <h5 class="card-header">Ajouter une tâche a réaliser</h5>
+    <div class="card-body">
+        <form #addTodoForm="ngForm">
+            <div class="mb-3">
+                <label for="imgUrl-todo" class="form-label">Nom de la tâche</label>
+                <input type="text" class="form-control" id="imgUrl-todo" name="todoName" [(ngModel)] = "todoToAdd.todoName">
+            </div>
+            <div class="mb-3">
+                <label for="description-todo" class="form-label">Description de la tâche</label>
+                <textarea class="form-control h-100" id="description-todo" name="description" required [(ngModel)] = "todoToAdd.description"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="url-todo" class="form-label">URL de l'image de la tâche</label>
+                <input type="text" class="form-control" id="url-todo" name="todoImage" required [(ngModel)] = "todoToAdd.todoImage">
+            </div>
+            <div class="mb-3">
+                <label for="etat-todo" class="form-label">Etat de la tâche</label>
+                <select class="form-select" name="" id="etat-todo" name="todoStatus" required [(ngModel)] = "todoToAdd.todoStatus">
+                    <option value="true">En cours</option>
+                    <option value="false">Terminée</option>
+                </select>
+            </div>
+            <button type="submit" [disabled]="!addTodoForm.valid" class="btn btn-primary" (click)="onSubmit() ">Ajouter</button>
+        </form>
+    </div>
+</div>

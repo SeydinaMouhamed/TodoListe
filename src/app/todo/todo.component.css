@@ -1,0 +1,25 @@
+.terminee{
+    background-color: darkgreen;
+}
+
+.encours{
+    background-color: beige;
+}
+
+.card-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    display: inline-block;
+}
+
+.card-item{
+    text-align: justify;
+    width: 230px;
+    height: auto;
+    margin: 10px;
+}
+
+.card-item img{
+    padding: 10px;
+}
